@@ -1,0 +1,3 @@
+[submodule "vendor/github.com/tektoncd/plumbing"]
+	path = vendor/github.com/tektoncd/plumbing
+	url = https://github.com/tektoncd/plumbing

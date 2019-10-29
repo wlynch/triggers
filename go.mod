@@ -13,11 +13,13 @@ require (
 	github.com/google/go-containerregistry v0.0.0-20191029173801-50b26ee28691 // indirect
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/google/go-querystring v1.0.0 // indirect
+	github.com/google/licenseclassifier v0.0.0-20190926221455-842c0d70d702 // indirect
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/googleapis/gnostic v0.3.0 // indirect
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79 // indirect
 	github.com/hashicorp/golang-lru v0.5.3 // indirect
 	github.com/imdario/mergo v0.3.7 // indirect
+	github.com/jstemmer/go-junit-report v0.9.1 // indirect
 	github.com/markbates/inflect v1.0.4 // indirect
 	github.com/mattbaird/jsonpatch v0.0.0-20171005235357-81af80346b1a // indirect
 	github.com/prometheus/client_golang v1.1.0 // indirect
