@@ -22,7 +22,7 @@ source $(dirname $0)/../vendor/github.com/tektoncd/plumbing/scripts/library.sh
 
 cd ${REPO_ROOT_DIR}
 
-# Ensure we have everything we need under vendor/
-dep ensure
+# Prune unused Go modules.
+go mod tidy
 
 update_licenses third_party/VENDOR-LICENSE "./cmd/*"
