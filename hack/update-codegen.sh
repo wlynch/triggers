@@ -28,6 +28,7 @@ KNATIVE_CODEGEN_PKG=${KNATIVE_CODEGEN_PKG:-$(go list -m -f '{{.Dir}}' knative.de
 # --output-base    because this script should also be able to run inside the vendor dir of
 #                  k8s.io/kubernetes. The output-base is needed for the generators to output into the vendor dir
 #                  instead of the $GOPATH directly. For normal projects this can be dropped.
+export GOBIN="${GOPATH}/bin"
 bash ${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
   github.com/tektoncd/triggers/pkg/client github.com/tektoncd/triggers/pkg/apis \
   triggers:v1alpha1 \
@@ -36,7 +37,7 @@ bash ${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
 echo "Running Knative generate..."
 
 # Knative Injection
-go install "knative.dev/pkg/codegen/cmd/injection-gen"
+gobin "knative.dev/pkg/codegen/cmd/injection-gen"
 bash ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
   github.com/tektoncd/triggers/pkg/client github.com/tektoncd/triggers/pkg/apis \
   "triggers:v1alpha1" \
