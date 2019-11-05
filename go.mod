@@ -12,8 +12,6 @@ require (
 	github.com/google/go-containerregistry v0.0.0-20191029173801-50b26ee28691 // indirect
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/google/go-querystring v1.0.0 // indirect
-	github.com/google/licenseclassifier v0.0.0-20190926221455-842c0d70d702 // indirect
-	github.com/google/trillian v1.3.3 // indirect
 	github.com/googleapis/gnostic v0.3.0 // indirect
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79 // indirect
 	github.com/jstemmer/go-junit-report v0.9.1 // indirect
@@ -35,3 +33,5 @@ require (
 	knative.dev/caching v0.0.0-20190719140829-2032732871ff
 	knative.dev/pkg v0.0.0-20190719141030-e4bc08cc8ded
 )
+
+replace github.com/tektoncd/plumbing => /usr/local/google/home/wlynch/src/github.com/tektoncd/plumbing
