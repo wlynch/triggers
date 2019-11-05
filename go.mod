@@ -27,7 +27,7 @@ require (
 	google.golang.org/api v0.7.1-0.20190805211801-b7b1a549a9ef // indirect
 	gopkg.in/yaml.v2 v2.2.4
 	k8s.io/api v0.0.0-20190528110122-9ad12a4af326
-	k8s.io/apimachinery v0.0.0-20190221084156-01f179d85dbc
+	k8s.io/apimachinery v0.0.0-20191104232853-7449f4ff0238
 	k8s.io/client-go v0.0.0-20180927013249-97dc22a90a29
 	k8s.io/code-generator v0.0.0-20191026065352-f361089c127c
 	knative.dev/caching v0.0.0-20190719140829-2032732871ff

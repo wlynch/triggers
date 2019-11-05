@@ -36,7 +36,7 @@ CODE_FENCE='^```'
 COMMENT='<!-- *FILE: *(.*) *-->'
 EMPTY='^[[:space:]]*$'
 
-source $(dirname $0)/../vendor/github.com/tektoncd/plumbing/scripts/library.sh
+source $(go list -m -f '{{.Dir}}' github.com/tektoncd/plumbing)/scripts/library.sh
 cd ${REPO_ROOT_DIR}
 
 # Parse flags
