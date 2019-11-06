@@ -3,7 +3,6 @@
 package tools
 
 import (
-	_ "github.com/myitcv/gobin"
 	_ "github.com/tektoncd/plumbing"
 	_ "k8s.io/code-generator/pkg/util"
 

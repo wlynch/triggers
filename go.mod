@@ -22,7 +22,7 @@ require (
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/google/go-querystring v1.0.0
 	github.com/google/gofuzz v1.0.0
-	github.com/google/licenseclassifier v0.0.0-20190711054124-c3068f13fcc3
+	github.com/google/licenseclassifier v0.0.0-20190926221455-842c0d70d702
 	github.com/google/uuid v1.1.1
 	github.com/googleapis/gnostic v0.3.0
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79
@@ -37,7 +37,7 @@ require (
 	github.com/matttproud/golang_protobuf_extensions v1.0.1
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
 	github.com/modern-go/reflect2 v1.0.1
-	github.com/myitcv/gobin v0.0.13 // indirect
+	github.com/myitcv/gobin v0.0.13
 	github.com/petar/GoLLRB v0.0.0-20190514000832-33fb24c13b99
 	github.com/peterbourgon/diskv v2.0.1+incompatible // indirect
 	github.com/pkg/errors v0.8.1
@@ -47,7 +47,7 @@ require (
 	github.com/prometheus/procfs v0.0.3
 	github.com/rogpeppe/go-internal v1.5.0
 	github.com/sergi/go-diff v1.0.0
-	github.com/spf13/pflag v1.0.3
+	github.com/spf13/pflag v1.0.5
 	github.com/tektoncd/pipeline v0.6.0
 	github.com/tektoncd/plumbing v0.0.0-20190723185055-a268939d0be5
 	github.com/tidwall/gjson v1.3.2
@@ -57,15 +57,15 @@ require (
 	go.opencensus.io v0.22.0
 	go.uber.org/atomic v1.4.0
 	go.uber.org/multierr v1.1.0
-	go.uber.org/zap v1.9.2-0.20180814183419-67bc79d13d15
-	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
-	golang.org/x/net v0.0.0-20190724013045-ca1201d0de80
+	go.uber.org/zap v1.10.0
+	golang.org/x/crypto v0.0.0-20191105034135-c7e5f84aec59
+	golang.org/x/net v0.0.0-20191105084925-a882066a44e0
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	golang.org/x/sync v0.0.0-20190423024810-112230192c58
-	golang.org/x/sys v0.0.0-20190804053845-51ab0e2deafa
+	golang.org/x/sys v0.0.0-20191105142833-ac3223d80179
 	golang.org/x/text v0.3.2
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4
-	golang.org/x/tools v0.0.0-20190807164442-cae9aa543496
+	golang.org/x/tools v0.0.0-20191104232314-dc038396d1f0
 	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7
 	google.golang.org/api v0.7.1-0.20190805211801-b7b1a549a9ef
 	google.golang.org/appengine v1.6.1
@@ -83,3 +83,5 @@ require (
 	knative.dev/caching v0.0.0-20190719140829-2032732871ff
 	knative.dev/pkg v0.0.0-20190719141030-e4bc08cc8ded
 )
+
+replace github.com/tektoncd/plumbing => /usr/local/google/home/wlynch/src/github.com/tektoncd/plumbing

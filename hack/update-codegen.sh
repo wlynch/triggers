@@ -37,8 +37,7 @@ bash ${CODEGEN_PKG}/generate-groups.sh "deepcopy,client,informer,lister" \
 echo "Running Knative generate..."
 
 # Knative Injection
-gobin "knative.dev/pkg/codegen/cmd/injection-gen"
-bash ${KNATIVE_CODEGEN_PKG}/hack/generate-knative.sh "injection" \
+bash ${REPO_ROOT_DIR}/hack/generate-knative.sh "injection" \
   github.com/tektoncd/triggers/pkg/client github.com/tektoncd/triggers/pkg/apis \
   "triggers:v1alpha1" \
   --go-header-file ${REPO_ROOT_DIR}/hack/boilerplate/boilerplate.go.txt
