@@ -39,7 +39,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.1
 	github.com/myitcv/gobin v0.0.13
 	github.com/petar/GoLLRB v0.0.0-20190514000832-33fb24c13b99
-	github.com/peterbourgon/diskv v2.0.1+incompatible // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/prometheus/client_golang v1.1.0
 	github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90
@@ -65,21 +64,22 @@ require (
 	golang.org/x/sys v0.0.0-20191105142833-ac3223d80179
 	golang.org/x/text v0.3.2
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4
-	golang.org/x/tools v0.0.0-20191104232314-dc038396d1f0
+	golang.org/x/tools v0.0.0-20191107235519-f7ea15e60b12
 	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7
+	gonum.org/v1/gonum v0.6.0 // indirect
 	google.golang.org/api v0.7.1-0.20190805211801-b7b1a549a9ef
 	google.golang.org/appengine v1.6.1
 	google.golang.org/genproto v0.0.0-20190716160619-c506a9f90610
 	google.golang.org/grpc v1.22.1
 	gopkg.in/inf.v0 v0.9.1
 	gopkg.in/yaml.v2 v2.2.2
-	k8s.io/api v0.0.0-20190528110122-9ad12a4af326
-	k8s.io/apimachinery v0.0.0-20190221084156-01f179d85dbc
-	k8s.io/client-go v0.0.0-20180927013249-97dc22a90a29
-	k8s.io/code-generator v0.0.0-20181128191024-b1289fc74931
-	k8s.io/gengo v0.0.0-20190327210449-e17681d19d3a
-	k8s.io/klog v0.2.0
-	k8s.io/kube-openapi v0.0.0-20190722073852-5e22f3d471e6
+	k8s.io/api v0.0.0-20190620084959-7cf5895f2711
+	k8s.io/apimachinery v0.0.0-20190612205821-1799e75a0719
+	k8s.io/client-go v0.0.0-20190620085101-78d2af792bab
+	k8s.io/code-generator v0.0.0-20190612205613-18da4a14b22b
+	k8s.io/gengo v0.0.0-20191010091904-7fa3014cb28f
+	k8s.io/klog v1.0.0
+	k8s.io/kube-openapi v0.0.0-20191107075043-30be4d16710a // indirect
 	knative.dev/caching v0.0.0-20190719140829-2032732871ff
 	knative.dev/pkg v0.0.0-20190719141030-e4bc08cc8ded
 )
