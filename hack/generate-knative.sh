@@ -46,11 +46,7 @@ shift 4
 (
   # To support running this script from anywhere, we have to first cd into this directory
   # so we can install the tools.
-  gobin -m knative.dev/pkg/codegen/cmd/defaulter-gen
-  gobin -m knative.dev/pkg/codegen/cmd/client-gen
-  gobin -m knative.dev/pkg/codegen/cmd/lister-gen
-  gobin -m knative.dev/pkg/codegen/cmd/informer-gen
-  gobin -m knative.dev/pkg/codegen/cmd/deepcopy-gen
+  gobin -m knative.dev/pkg/codegen/cmd/injection-gen
 )
 
 function codegen::join() { local IFS="$1"; shift; echo "$*"; }
