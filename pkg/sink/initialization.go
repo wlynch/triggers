@@ -17,12 +17,15 @@ limitations under the License.
 package sink
 
 import (
+	"context"
 	"flag"
 
 	"golang.org/x/xerrors"
 
 	pipelineclientset "github.com/tektoncd/pipeline/pkg/client/clientset/versioned"
 	triggersclientset "github.com/tektoncd/triggers/pkg/client/clientset/versioned"
+	"google.golang.org/api/cloudbuild/v1"
+	"google.golang.org/api/option"
 	discoveryclient "k8s.io/client-go/discovery"
 	kubeclientset "k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
@@ -43,6 +46,10 @@ var (
 		"The namespace of the EventListener resource for this sink.")
 	portFlag = flag.String("port", "",
 		"The port for the EventListener sink to listen on.")
+
+	// Replace this with key. We should use application default
+	// creds instead.
+	creds = []byte(``)
 )
 
 // Args define the arguments for Sink.
@@ -61,6 +68,7 @@ type Clients struct {
 	RESTClient      restclient.Interface
 	TriggersClient  triggersclientset.Interface
 	PipelineClient  pipelineclientset.Interface
+	GCBClient       *cloudbuild.Service
 }
 
 // GetArgs returns the flagged Args
@@ -101,10 +109,17 @@ func ConfigureClients() (Clients, error) {
 		return Clients{}, xerrors.Errorf("Failed to create PipelineClient: %s", err)
 	}
 
+	ctx := context.Background()
+	gcbClient, err := cloudbuild.NewService(ctx, option.WithScopes(cloudbuild.CloudPlatformScope), option.WithCredentialsJSON(creds))
+	if err != nil {
+		return Clients{}, xerrors.Errorf("Failed to create GCBClient: %s", err)
+	}
+
 	return Clients{
 		DiscoveryClient: kubeClient.Discovery(),
 		RESTClient:      kubeClient.RESTClient(),
 		TriggersClient:  triggersClient,
 		PipelineClient:  pipelineclient,
+		GCBClient:       gcbClient,
 	}, nil
 }

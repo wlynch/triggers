@@ -31,6 +31,7 @@ import (
 	"golang.org/x/xerrors"
 
 	"github.com/tektoncd/triggers/pkg/interceptors/webhook"
+	cloudbuild "google.golang.org/api/cloudbuild/v1"
 
 	pipelineclientset "github.com/tektoncd/pipeline/pkg/client/clientset/versioned"
 	triggersclientset "github.com/tektoncd/triggers/pkg/client/clientset/versioned"
@@ -51,6 +52,7 @@ type Sink struct {
 	RESTClient             restclient.Interface
 	PipelineClient         pipelineclientset.Interface
 	HTTPClient             *http.Client
+	GCBClient              *cloudbuild.Service
 	EventListenerName      string
 	EventListenerNamespace string
 	Logger                 *zap.SugaredLogger
@@ -174,6 +176,11 @@ func (r Sink) createResource(rt json.RawMessage, triggerName string, eventID str
 	resourcekind := gjson.GetBytes(rt, "kind")
 	r.Logger.Infof("Generating resource: kind: %s, name: %s ", resourcekind, resourcename)
 
+	// Hack to short circuit k8s request creation. Really we should make the rest
+	// client resource aware.
+	if apiVersion == "cloudbuild/v1" {
+		return r.gcbCreate(rt)
+	}
 	uri := createRequestURI(apiVersion, apiResource.Name, namespace, apiResource.Namespaced)
 	result := r.RESTClient.Post().
 		RequestURI(uri).
@@ -188,6 +195,11 @@ func (r Sink) createResource(rt json.RawMessage, triggerName string, eventID str
 
 // findAPIResource returns the APIResource definition using the discovery client.
 func findAPIResource(discoveryClient discoveryclient.DiscoveryInterface, apiVersion, kind string) (*metav1.APIResource, error) {
+	if apiVersion == "cloudbuild/v1" {
+		return &metav1.APIResource{
+			Name: kind,
+		}, nil
+	}
 	resourceList, err := discoveryClient.ServerResourcesForGroupVersion(apiVersion)
 	if err != nil {
 		return nil, xerrors.Errorf("Error getting kubernetes server resources for apiVersion %s: %s", apiVersion, err)
@@ -227,4 +239,28 @@ func addLabels(rt json.RawMessage, labels map[string]string) (json.RawMessage, e
 		}
 	}
 	return rt, err
+}
+
+type buildResource struct {
+	Spec *cloudbuild.Build `json:"spec"`
+}
+
+func (r Sink) gcbCreate(rt json.RawMessage) error {
+	b := new(buildResource)
+	if err := json.Unmarshal(rt, b); err != nil {
+		return err
+	}
+
+	r.Logger.Infof("Creating build %+v\n", b.Spec)
+	op, err := r.GCBClient.Projects.Builds.Create("wlynch-test", b.Spec).Do()
+	if err != nil {
+		return err
+	}
+
+	m := new(cloudbuild.BuildOperationMetadata)
+	if err := json.Unmarshal(op.Metadata, m); err != nil {
+		return err
+	}
+	r.Logger.Infof("Created build: %s", m.Build.LogUrl)
+	return nil
 }

@@ -8,3 +8,5 @@ spec:
     value: master
   - name: gitrepositoryurl
     value: https://github.com/tektoncd/triggers
+  - name: message
+    value: "hello tekton!"

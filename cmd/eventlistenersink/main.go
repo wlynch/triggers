@@ -18,9 +18,10 @@ package main
 
 import (
 	"fmt"
-	"go.uber.org/zap"
 	"log"
 	"net/http"
+
+	"go.uber.org/zap"
 
 	"github.com/tektoncd/triggers/pkg/logging"
 	"github.com/tektoncd/triggers/pkg/sink"
@@ -76,6 +77,7 @@ func main() {
 		RESTClient:             sinkClients.RESTClient,
 		TriggersClient:         sinkClients.TriggersClient,
 		PipelineClient:         sinkClients.PipelineClient,
+		GCBClient:              sinkClients.GCBClient,
 		HTTPClient:             http.DefaultClient,
 		EventListenerName:      sinkArgs.ElName,
 		EventListenerNamespace: sinkArgs.ElNamespace,

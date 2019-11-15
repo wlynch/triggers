@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: gcb-pipeline-template
+spec:
+  params:
+  - name: message
+    description: The message to print
+    default: This is the default message
+  resourcetemplates:
+  - apiVersion: cloudbuild/v1
+    kind: Build
+    metadata:
+      name: "GCB Demo"
+    spec:
+      steps:
+      - name: 'ubuntu'
+        args: ['echo', '$(params.message)']

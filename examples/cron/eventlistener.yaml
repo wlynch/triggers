@@ -9,4 +9,4 @@ spec:
       bindings:
       - name: cron-binding
       template:
-        name: pipeline-template
+        name: gcb-pipeline-template

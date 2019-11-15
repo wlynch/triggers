@@ -34,6 +34,7 @@ const tektonAPIVersion = GroupName + "/v1alpha1"
 // TODO: Replace static restrictions here with SubjectAccessReview create checks
 var allowedTemplateTypes = map[string][]string{
 	tektonAPIVersion: {"pipelineresource", "pipelinerun", "taskrun", "pipeline", "clustertask", "task", "condition"},
+	"cloudbuild/v1":  {"build"},
 }
 
 // Check that TriggerTemplate may be validated and defaulted.
