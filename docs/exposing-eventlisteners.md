@@ -30,7 +30,8 @@ Instructions for installing nginx Ingress on other Kubernetes services can be fo
     ```
 1. Create the Ingress resource. A sample Ingress is below. Check the docs [here](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/)
 for a full range of configuration options.
-    ```YAML
+
+    ```yaml
     apiVersion: extensions/v1beta1
     kind: Ingress
     metadata:
